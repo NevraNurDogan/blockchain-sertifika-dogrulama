@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  ganache:
+    image: trufflesuite/ganache:latest
+    
+    command: ["--host","0.0.0.0","--chain.chainId","1337","--wallet.totalAccounts","10","--miner.blockTime","0"]
+    ports:
+      - "8545:8545"
+    networks:
+      - certnet
+
+  hardhat:
+    image: node:20 
+    working_dir: /workspace
+    volumes:
+      - ./dapp:/workspace
+    depends_on:
+      - ganache
+    networks:
+      - certnet
+   
+    command: bash -c "npm install && tail -f /dev/null" 
+
+  client:
+    image: node:20
+    working_dir: /app
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173" 
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - hardhat
+    networks:
+      - certnet
+   
+    command: bash -c "npm install && npm run dev -- --host"
+
+networks:
+  certnet:
+    name: certnet
