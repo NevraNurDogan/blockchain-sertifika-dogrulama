@@ -71,23 +71,15 @@ const CONTRACT_ADDRESS = "0x.....(Kopyaladığınız Adres).....";
 
 **Adım 5: Test Süreçleri**  
 Akıllı kontratın güvenliğini ve iş mantığını doğrulamak için yazılmış birim testlerini (Unit Tests) çalıştırmak için şu komutu kullanın: 
- 
-Bash
 
+```Bash
 docker-compose exec hardhat npx hardhat test
+```
 
 **Adım 6: Uygulamayı**
 Tarayıcınızda şu adrese gidin: http://localhost:5173
 
- Test Süreçleri
-Akıllı kontratın güvenliğini ve iş mantığını doğrulamak için yazılmış birim testlerini (Unit Tests) çalıştırmak için:
 
-```Bash
-
-cd dapp                            
-npx hardhat test                   
-
-```
 ## Test Kapsamı
 
 - [ ] **Yetkili (Issuer):** Sertifika oluşturabilir mi?
