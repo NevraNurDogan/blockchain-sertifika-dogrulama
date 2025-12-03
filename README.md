@@ -37,13 +37,9 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
 
 **Adım 1: Projeyi Klonlayın ve Hazırlayın:**
 
-``` Bash
-
-git clone https://github.com/NevraNurDogan/blockchain-sertifika-dogrulama.git
-
-cd blockchain-sertifika-dogrulama                                                                              
-                                                                                                                            
-cd blockchain-sertifika-dogrulama                                                                                        
+```bash
+git clone [https://github.com/NevraNurDogan/blockchain-sertifika-dogrulama.git](https://github.com/NevraNurDogan/blockchain-sertifika-dogrulama.git)
+cd blockchain-sertifika-dogrulama                                                                                    
                                                                                                                          
 ```
 **Adım 2: Docker Ortamını Başlatın:**
@@ -59,10 +55,7 @@ Bu işlem Ganache ağını başlatacak ve gerekli bağımlılıkları yükleyece
 Kontratı yerel Ganache ağına yüklemek için dapp klasörüne gidin ve deploy scriptini çalıştırın:
 
 ```Bash
-
-cd dapp                                                               
-npm install                                                          
-npx hardhat run scripts/deploy.js --network localhost                
+docker-compose exec hardhat npx hardhat run scripts/deploy.js --network localhost               
 
 ```
  ÖNEMLİ: Bu komutun çıktısında CertificateRegistry deployed to: 0x... şeklinde bir adres göreceksiniz. Bu adresi kopyalayın.
@@ -76,7 +69,14 @@ JavaScript
 
 const CONTRACT_ADDRESS = "0x.....(Kopyaladığınız Adres).....";
 
-**Adım 5: Uygulamayı**
+**Adım 5: Test Süreçleri**  
+Akıllı kontratın güvenliğini ve iş mantığını doğrulamak için yazılmış birim testlerini (Unit Tests) çalıştırmak için şu komutu kullanın: 
+ 
+Bash
+
+docker-compose exec hardhat npx hardhat test
+
+**Adım 6: Uygulamayı**
 Tarayıcınızda şu adrese gidin: http://localhost:5173
 
  Test Süreçleri
