@@ -35,16 +35,18 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
 * Node.js (LTS sürümü önerilir)
 * Git
 
-**Adım 1: Projeyi Klonlayın ve Hazırlayın**
+**Adım 1: Projeyi Klonlayın ve Hazırlayın:**
 
 ``` Bash
 
-git clone [https://github.com/kullanici_adiniz/blockchain-sertifika-dogrulama.git](https://github.com/kullanici_adiniz/ blockchain-sertifika-dogrulama.git)                                                                                      
+git clone https://github.com/NevraNurDogan/blockchain-sertifika-dogrulama.git
+
+cd blockchain-sertifika-dogrulama                                                                              
                                                                                                                             
 cd blockchain-sertifika-dogrulama                                                                                        
                                                                                                                          
 ```
-**Adım 2: Docker Ortamını Başlatın**
+**Adım 2: Docker Ortamını Başlatın:**
 Tüm servisleri (Blockchain, Backend, Frontend) tek komutla ayağa kaldırın:
 
 ```Bash
@@ -53,7 +55,7 @@ docker-compose up -d --build
 ```
 Bu işlem Ganache ağını başlatacak ve gerekli bağımlılıkları yükleyecektir.
 
-**Adım 3: Akıllı Kontratı Deploy Edin**
+**Adım 3: Akıllı Kontratı Deploy Edin:**
 Kontratı yerel Ganache ağına yüklemek için dapp klasörüne gidin ve deploy scriptini çalıştırın:
 
 ```Bash
@@ -65,7 +67,7 @@ npx hardhat run scripts/deploy.js --network localhost
 ```
  ÖNEMLİ: Bu komutun çıktısında CertificateRegistry deployed to: 0x... şeklinde bir adres göreceksiniz. Bu adresi kopyalayın.
 
-**Adım 4: Frontend Yapılandırması**
+**Adım 4: Frontend Yapılandırması:**
 client/src/App.jsx dosyasını açın.
 
 CONTRACT_ADDRESS değişkenini kopyaladığınız yeni adres ile güncelleyin:
@@ -89,8 +91,11 @@ npx hardhat test
 Test Kapsamı:
 
  Yetkili (Issuer) sertifika oluşturabilir mi?
+
  Yetkisiz kullanıcı işlem yapmaya çalıştığında engelleniyor mu (AccessControl)?
+
  Sertifika doğrulama (Verify) doğru çalışıyor mu?
+
  İptal etme (Revoke) işlemi sonrası sertifika geçersiz oluyor mu?
 
 ## Veri Gizliliği ve Güvenlik (KVKK)
@@ -129,20 +134,28 @@ Hatalı oluşturulan bir sertifika, ID girilerek "İPTAL ET" butonu ile geçersi
  Proje Yapısı
 .
 ├── docker-compose.yml      # Konteyner orkestrasyon dosyası
+|
 ├── dapp/                   # Backend / Smart Contract
+|   |
 │   ├── contracts/          # Solidity kodları (CertificateRegistry.sol)
+|   |
 │   ├── scripts/            # Deploy scriptleri
+|   |
 │   ├── test/               # Test dosyaları
+|   |
 │   └── hardhat.config.js   # Hardhat ayarları
+|
 └── client/                 # Frontend / React Arayüzü
+    |
     ├── src/
+    |   ├
     │   ├── App.jsx         # Ana uygulama ve mantık
+    |   ├
     │   └── ...
+    |
     └── vite.config.js      # Vite ayarları
- Ekip ve Lisans
-Bu proje Konya Teknik Üniversitesi Yazılım Mühendisliği bölümü ödevi kapsamında hazırlanmıştır.
 
-Lisans: MIT
+
  ```  
  
  
