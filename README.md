@@ -88,72 +88,55 @@ cd dapp
 npx hardhat test                   
 
 ```
-Test Kapsamı:
+## Test Kapsamı
 
- Yetkili (Issuer) sertifika oluşturabilir mi?
-
- Yetkisiz kullanıcı işlem yapmaya çalıştığında engelleniyor mu (AccessControl)?
-
- Sertifika doğrulama (Verify) doğru çalışıyor mu?
-
- İptal etme (Revoke) işlemi sonrası sertifika geçersiz oluyor mu?
+- [ ] **Yetkili (Issuer):** Sertifika oluşturabilir mi?
+- [ ] **Erişim Kontrolü (AccessControl):** Yetkisiz kullanıcı işlem yapmaya çalıştığında engelleniyor mu?
+- [ ] **Sertifika Doğrulama (Verify):** Doğrulama fonksiyonu doğru çalışıyor mu?
+- [ ] **İptal Etme (Revoke):** İşlem sonrası sertifika "geçersiz" statüsüne dönüyor mu?
 
 ## Veri Gizliliği ve Güvenlik (KVKK)
+
 Bu proje, kişisel verilerin korunması için özel bir mimari kullanır:
 
-Off-Chain Storage: Öğrenci ismi, TC kimlik no gibi hassas veriler blokzincirde saklanmaz.
+- **Off-Chain Storage:** Öğrenci ismi, TC kimlik no gibi hassas veriler blokzincirde saklanmaz.
+- **Hashing:** Veriler `SHA-256` (Keccak256) algoritması ile özetlenir.
+- **Salting (Tuzlama):** Sözlük saldırılarını (Dictionary Attacks) önlemek için her sertifikaya özel rastgele üretilmiş bir **Salt** (Tuz) değeri eklenir.
 
-Hashing: Veriler SHA-256 (Keccak256) algoritması ile özetlenir.
+**Doğrulama Mantığı:**
+1. **Zincire yazılan veri:** `Hash(TC + İsim + Salt)`
+2. **Kontrol anı:** Kullanıcı TC, İsim ve Salt değerini girer. İstemci (Frontend) bu verilerin hash'ini tekrar hesaplar ve zincirdeki kayıtlı hash ile eşleşip eşleşmediğini kontrol eder.
 
-Salting (Tuzlama): Sözlük saldırılarını (Dictionary Attacks) önlemek için her sertifikaya özel rastgele üretilmiş bir Salt (Tuz) değeri eklenir.
+## Kullanım Senaryoları
 
-Doğrulama:
+### 1. Sertifika Oluşturma (Issue)
+- Yönetici panelinden **ID**, **TC**, **İsim** ve **Başlık** girilir.
+- **"Rastgele Üret"** butonu ile güvenli bir Salt oluşturulur.
+- **"Sertifikayı Oluştur"** butonuna basılır ve işlem blokzincire yazılır.
 
-Zincire yazılan veri: Hash(TC + İsim + Salt)
+### 2. Sertifika Doğrulama (Verify)
+- Herhangi bir kullanıcı, sertifika sahibinden aldığı **ID** ve **Salt** değerini girer.
+- **"Sorgula"** butonuna basıldığında sistem hash kontrolü yapar.
+- Sonuç olarak sertifikanın **Geçerli**, **Geçersiz** veya **İptal Edilmiş** olduğu gösterilir.
 
-Doğrulama anında kullanıcı TC, İsim ve Salt değerini girer. İstemci (Frontend) bu verilerin hash'ini tekrar hesaplar ve zincirdeki hash ile eşleşip eşleşmediğini kontrol eder.
+### 3. Sertifika İptali (Revoke)
+- Hatalı oluşturulan bir sertifika, ID girilerek **"İPTAL ET"** butonu ile geçersiz kılınabilir.
 
- Kullanım Senaryoları
-1. Sertifika Oluşturma (Issue)
-Yönetici panelinden ID, TC, İsim ve Başlık girilir.
+## Proje Yapısı
 
-"Rastgele Üret" butonu ile güvenli bir Salt oluşturulur.
-
-"Sertifikayı Oluştur" butonuna basılır ve işlem blokzincire yazılır.
-
-2. Sertifika Doğrulama (Verify)
-Herhangi bir kullanıcı, sertifika sahibinden aldığı ID ve Salt değerini girer.
-
-"Sorgula" butonuna basıldığında sistem hash kontrolü yapar.
-
-Sonuç olarak sertifikanın Geçerli, Geçersiz veya İptal Edilmiş olduğu gösterilir.
-
-3. Sertifika İptali (Revoke)
-Hatalı oluşturulan bir sertifika, ID girilerek "İPTAL ET" butonu ile geçersiz kılınabilir.
-
- Proje Yapısı
+```bash
 .
-├── docker-compose.yml      # Konteyner orkestrasyon dosyası
-|
-├── dapp/                   # Backend / Smart Contract
-|   |
-│   ├── contracts/          # Solidity kodları (CertificateRegistry.sol)
-|   |
-│   ├── scripts/            # Deploy scriptleri
-|   |
-│   ├── test/               # Test dosyaları
-|   |
-│   └── hardhat.config.js   # Hardhat ayarları
-|
-└── client/                 # Frontend / React Arayüzü
-    |
+├── docker-compose.yml       # Konteyner orkestrasyon dosyası
+├── dapp/                    # Backend / Smart Contract
+│   ├── contracts/           # Solidity kodları (CertificateRegistry.sol)
+│   ├── scripts/             # Deploy scriptleri
+│   ├── test/                # Test dosyaları
+│   └── hardhat.config.js    # Hardhat ayarları
+└── client/                  # Frontend / React Arayüzü
     ├── src/
-    |   ├
-    │   ├── App.jsx         # Ana uygulama ve mantık
-    |   ├
+    │   ├── App.jsx          # Ana uygulama ve mantık
     │   └── ...
-    |
-    └── vite.config.js      # Vite ayarları
+    └── vite.config.js       # Vite ayarları
 
 
  ```  
