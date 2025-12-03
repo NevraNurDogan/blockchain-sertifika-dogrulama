@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "C:\\Users\\nevra\\Desktop\\blockchain-sertifika-dogrulama\\dapp\\contracts\\CertificateRegistry.sol": {
-      "lastModificationDate": 1764610973789,
-      "contentHash": "d743b95bb7762b54b52ff056d1f17f2a",
+    "/workspace/contracts/CertificateRegistry.sol": {
+      "lastModificationDate": 1764746313331,
+      "contentHash": "720d258d7f6d62a29b2066aa37a1b7d4",
       "sourceName": "contracts/CertificateRegistry.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -39,7 +39,7 @@
         "CertificateRegistry"
       ]
     },
-    "C:\\Users\\nevra\\Desktop\\blockchain-sertifika-dogrulama\\dapp\\node_modules\\@openzeppelin\\contracts\\access\\AccessControl.sol": {
+    "/workspace/node_modules/@openzeppelin/contracts/access/AccessControl.sol": {
       "lastModificationDate": 1764345315650,
       "contentHash": "d0e2c05f09a3aea7cd299bbd4a435ee2",
       "sourceName": "@openzeppelin/contracts/access/AccessControl.sol",
@@ -79,7 +79,7 @@
         "AccessControl"
       ]
     },
-    "C:\\Users\\nevra\\Desktop\\blockchain-sertifika-dogrulama\\dapp\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
+    "/workspace/node_modules/@openzeppelin/contracts/utils/Context.sol": {
       "lastModificationDate": 1764345315773,
       "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
@@ -115,7 +115,7 @@
         "Context"
       ]
     },
-    "C:\\Users\\nevra\\Desktop\\blockchain-sertifika-dogrulama\\dapp\\node_modules\\@openzeppelin\\contracts\\access\\IAccessControl.sol": {
+    "/workspace/node_modules/@openzeppelin/contracts/access/IAccessControl.sol": {
       "lastModificationDate": 1764345316346,
       "contentHash": "def1e8f7b6cac577cf2600655bf3bdf8",
       "sourceName": "@openzeppelin/contracts/access/IAccessControl.sol",
@@ -151,7 +151,7 @@
         "IAccessControl"
       ]
     },
-    "C:\\Users\\nevra\\Desktop\\blockchain-sertifika-dogrulama\\dapp\\node_modules\\@openzeppelin\\contracts\\utils\\introspection\\ERC165.sol": {
+    "/workspace/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
       "lastModificationDate": 1764345316062,
       "contentHash": "0906d06dca25210d4696dcef6dad2909",
       "sourceName": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
@@ -189,7 +189,7 @@
         "ERC165"
       ]
     },
-    "C:\\Users\\nevra\\Desktop\\blockchain-sertifika-dogrulama\\dapp\\node_modules\\@openzeppelin\\contracts\\utils\\introspection\\IERC165.sol": {
+    "/workspace/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
       "lastModificationDate": 1764345316419,
       "contentHash": "7074c93b1ea0a122063f26ddd1db1032",
       "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",

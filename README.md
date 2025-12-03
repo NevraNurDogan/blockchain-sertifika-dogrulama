@@ -132,7 +132,7 @@ Bu proje, kişisel verilerin korunması için özel bir mimari kullanır:
 │   ├── scripts/             # Deploy scriptleri
 │   ├── test/                # Test dosyaları
 │   └── hardhat.config.js    # Hardhat ayarları
-└── client/                  # Frontend / React Arayüzü
+└── client/                  # Frontend 
     ├── src/
     │   ├── App.jsx          # Ana uygulama ve mantık
     │   └── ...

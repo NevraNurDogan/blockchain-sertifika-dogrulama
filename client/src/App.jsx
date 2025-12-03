@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import './App.css';
 
-const CONTRACT_ADDRESS = "0x24e6a8b39353c28D40e8aEef3EEcA586D03166b3"; 
+const CONTRACT_ADDRESS = "0xe78A0F7E598Cc8b0Bb87894B0F60dD2a88d6a8Ab"; 
 
 const ABI = [
   "function issue(bytes32 _id, bytes32 _holderHash, string _title, string _issuer, uint64 _expiresAt) public",

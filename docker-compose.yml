@@ -4,9 +4,11 @@ services:
   ganache:
     image: trufflesuite/ganache:latest
     
-    command: ["--host","0.0.0.0","--chain.chainId","1337","--wallet.totalAccounts","10","--miner.blockTime","0"]
+    command: ["--host","0.0.0.0","--chain.chainId","1337","--wallet.totalAccounts","10","--miner.blockTime","0", "--database.dbPath", "/app/db", "--wallet.deterministic"]
     ports:
       - "8545:8545"
+    volumes:
+      - ./ganache_data:/app/db
     networks:
       - certnet
 
